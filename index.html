@@ -1,0 +1,3099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#16a34a">
+<meta name="description" content="PelzX Life — a personal diary, life story, daily motivation and complete skill-growth roadmap.">
+
+<title>PelzX Life | Diary & Skill Roadmap</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --green:#16a34a;
+  --green2:#22c55e;
+  --green3:#15803d;
+
+  --black:#050807;
+  --black2:#0b100d;
+
+  --card:#101713;
+  --card2:#141c17;
+
+  --white:#f5fff8;
+  --muted:#91a39a;
+
+  --line:rgba(255,255,255,.08);
+
+  --danger:#ef4444;
+  --yellow:#facc15;
+
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(22,163,74,.18),transparent 28%),
+    radial-gradient(circle at 100% 20%,rgba(34,197,94,.08),transparent 25%),
+    var(--black);
+  color:var(--white);
+  min-height:100vh;
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.app{
+  width:100%;
+  max-width:520px;
+  min-height:100vh;
+  margin:auto;
+  background:rgba(5,8,7,.96);
+  position:relative;
+  overflow:hidden;
+}
+
+@media(min-width:700px){
+  body{
+    padding:20px;
+  }
+
+  .app{
+    min-height:calc(100vh - 40px);
+    border:1px solid var(--line);
+    border-radius:30px;
+    box-shadow:var(--shadow);
+  }
+}
+
+/* HEADER */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  padding:16px 18px;
+  background:rgba(5,8,7,.88);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+
+.logo{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--green2),var(--green3));
+  color:white;
+  font-family:"Space Grotesk";
+  font-weight:800;
+  box-shadow:0 8px 25px rgba(22,163,74,.25);
+}
+
+.brand h1{
+  font-family:"Space Grotesk";
+  font-size:17px;
+}
+
+.brand small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  margin-top:2px;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border-radius:13px;
+  border:1px solid var(--line);
+  background:var(--card);
+  color:white;
+  display:grid;
+  place-items:center;
+}
+
+/* PAGES */
+
+.page{
+  display:none;
+  padding:20px 18px 105px;
+  animation:pageIn .35s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes pageIn{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* TEXT */
+
+.eyebrow{
+  color:var(--green2);
+  text-transform:uppercase;
+  letter-spacing:1.7px;
+  font-size:10px;
+  font-weight:800;
+}
+
+h2{
+  font-family:"Space Grotesk";
+  font-size:29px;
+  line-height:1.05;
+  margin:6px 0 9px;
+}
+
+h3{
+  font-family:"Space Grotesk";
+}
+
+.muted{
+  color:var(--muted);
+  line-height:1.65;
+  font-size:13px;
+}
+
+/* CARDS */
+
+.card{
+  background:linear-gradient(145deg,rgba(20,28,23,.98),rgba(12,18,14,.98));
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:17px;
+  margin-bottom:13px;
+  box-shadow:0 10px 35px rgba(0,0,0,.14);
+}
+
+.card-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:13px;
+}
+
+.card-title h3{
+  font-size:15px;
+}
+
+.badge{
+  padding:5px 9px;
+  border-radius:999px;
+  background:rgba(34,197,94,.12);
+  border:1px solid rgba(34,197,94,.2);
+  color:#86efac;
+  font-size:9px;
+  font-weight:800;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:24px 20px;
+  border-radius:25px;
+  margin-bottom:15px;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(34,197,94,.24),transparent 38%),
+    linear-gradient(145deg,#122218,#07100a);
+  border:1px solid rgba(34,197,94,.15);
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:rgba(34,197,94,.07);
+  right:-50px;
+  bottom:-70px;
+}
+
+.hero h2{
+  max-width:330px;
+}
+
+.hero .quote{
+  margin-top:14px;
+  color:#d5e6dc;
+  font-size:13px;
+  line-height:1.7;
+}
+
+/* BUTTONS */
+
+.btn{
+  border:none;
+  border-radius:14px;
+  padding:12px 15px;
+  font-weight:800;
+  font-size:12px;
+  color:white;
+  background:linear-gradient(135deg,var(--green2),var(--green3));
+  box-shadow:0 10px 25px rgba(22,163,74,.2);
+}
+
+.btn.secondary{
+  background:var(--card2);
+  border:1px solid var(--line);
+  box-shadow:none;
+}
+
+.btn.danger{
+  background:rgba(239,68,68,.12);
+  color:#fca5a5;
+  border:1px solid rgba(239,68,68,.2);
+  box-shadow:none;
+}
+
+.btn.full{
+  width:100%;
+}
+
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:11px;
+}
+
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.stat{
+  padding:15px;
+  border-radius:18px;
+  background:var(--card);
+  border:1px solid var(--line);
+}
+
+.stat strong{
+  display:block;
+  font-family:"Space Grotesk";
+  font-size:22px;
+  margin-bottom:3px;
+}
+
+.stat span{
+  font-size:10px;
+  color:var(--muted);
+}
+
+/* DAILY */
+
+.daily-card{
+  border:1px solid rgba(34,197,94,.18);
+  background:
+    linear-gradient(145deg,rgba(22,163,74,.13),rgba(16,23,19,.98));
+}
+
+.daily-icon{
+  font-size:26px;
+  margin-bottom:8px;
+}
+
+.daily-text{
+  font-size:14px;
+  line-height:1.75;
+  color:#e1eee6;
+}
+
+.daily-label{
+  color:#86efac;
+  font-size:9px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1.4px;
+  margin-bottom:7px;
+}
+
+/* FORMS */
+
+.field{
+  margin-bottom:12px;
+}
+
+.field label{
+  display:block;
+  font-size:10px;
+  color:var(--muted);
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  color:white;
+  background:#0b110d;
+  border:1px solid var(--line);
+  outline:none;
+  border-radius:13px;
+  padding:12px;
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:rgba(34,197,94,.55);
+}
+
+/* MOOD */
+
+.moods{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:3px;
+}
+
+.mood{
+  min-width:58px;
+  padding:10px 6px;
+  border-radius:15px;
+  background:var(--card);
+  border:1px solid var(--line);
+  text-align:center;
+  font-size:20px;
+}
+
+.mood small{
+  display:block;
+  color:var(--muted);
+  font-size:8px;
+  margin-top:4px;
+}
+
+.mood.active{
+  border-color:var(--green2);
+  background:rgba(34,197,94,.1);
+}
+
+/* LISTS */
+
+.item{
+  padding:14px;
+  border-radius:17px;
+  background:#0b110d;
+  border:1px solid var(--line);
+  margin-bottom:9px;
+}
+
+.item-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.item h4{
+  font-size:13px;
+  margin-bottom:5px;
+}
+
+.item p{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+}
+
+.item-actions{
+  display:flex;
+  gap:7px;
+  margin-top:10px;
+}
+
+.mini-btn{
+  border:1px solid var(--line);
+  background:var(--card2);
+  color:#dcebe2;
+  padding:7px 9px;
+  border-radius:9px;
+  font-size:9px;
+}
+
+/* STORY */
+
+.story{
+  font-size:13px;
+  line-height:1.9;
+  color:#dce9e1;
+}
+
+.story p{
+  margin-bottom:13px;
+}
+
+.story strong{
+  color:#86efac;
+}
+
+/* ROADMAP */
+
+.roadmap-hero{
+  background:
+    radial-gradient(circle at 100% 0%,rgba(34,197,94,.22),transparent 35%),
+    linear-gradient(145deg,#122419,#08100b);
+}
+
+.progress-wrap{
+  margin-top:16px;
+}
+
+.progress-head{
+  display:flex;
+  justify-content:space-between;
+  font-size:10px;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+
+.progress{
+  height:7px;
+  border-radius:99px;
+  background:#07100a;
+  overflow:hidden;
+}
+
+.progress span{
+  display:block;
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,var(--green3),var(--green2));
+  border-radius:inherit;
+  transition:.4s;
+}
+
+.skill-card{
+  position:relative;
+  overflow:hidden;
+}
+
+.skill-number{
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:rgba(34,197,94,.1);
+  color:#86efac;
+  font-weight:800;
+  font-size:11px;
+}
+
+.skill-card h3{
+  font-size:14px;
+  margin:10px 0 5px;
+}
+
+.skill-card p{
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.6;
+}
+
+.module{
+  border:1px solid var(--line);
+  background:#0b110d;
+  border-radius:15px;
+  padding:12px;
+  margin-top:8px;
+}
+
+.module-top{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.module-num{
+  color:#86efac;
+  font-size:9px;
+  font-weight:800;
+  min-width:25px;
+}
+
+.module h4{
+  font-size:11px;
+}
+
+.module p{
+  margin-top:4px;
+  font-size:10px;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.module.done{
+  border-color:rgba(34,197,94,.35);
+  background:rgba(34,197,94,.07);
+}
+
+.check{
+  margin-left:auto;
+  width:22px;
+  height:22px;
+  border-radius:7px;
+  border:1px solid var(--line);
+  background:transparent;
+  color:white;
+}
+
+.module.done .check{
+  background:var(--green);
+  border-color:var(--green);
+}
+
+.phase{
+  margin-top:18px;
+  margin-bottom:10px;
+}
+
+.phase-number{
+  color:#86efac;
+  font-size:9px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+}
+
+.phase h3{
+  margin-top:4px;
+  font-size:18px;
+}
+
+/* TIMELINE */
+
+.timeline{
+  position:relative;
+  padding-left:22px;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:6px;
+  top:4px;
+  bottom:4px;
+  width:1px;
+  background:rgba(34,197,94,.25);
+}
+
+.timeline-item{
+  position:relative;
+  margin-bottom:16px;
+}
+
+.timeline-item:before{
+  content:"";
+  position:absolute;
+  left:-20px;
+  top:3px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--green2);
+  box-shadow:0 0 0 4px rgba(34,197,94,.08);
+}
+
+.timeline-item h4{
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.timeline-item p{
+  font-size:10px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* NAV */
+
+.bottom-nav{
+  position:fixed;
+  z-index:60;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:520px;
+  padding:9px 8px calc(9px + env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:4px;
+  background:rgba(5,8,7,.94);
+  backdrop-filter:blur(20px);
+  border-top:1px solid var(--line);
+}
+
+.nav-btn{
+  border:0;
+  background:transparent;
+  color:#708077;
+  padding:7px 2px;
+  border-radius:12px;
+  font-size:8px;
+}
+
+.nav-btn span{
+  display:block;
+  font-size:17px;
+  margin-bottom:3px;
+}
+
+.nav-btn.active{
+  color:#86efac;
+  background:rgba(34,197,94,.08);
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(8px);
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:15px;
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:500px;
+  background:#101713;
+  border:1px solid var(--line);
+  border-radius:25px;
+  padding:20px;
+  animation:modalIn .25s ease;
+}
+
+@keyframes modalIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.modal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  z-index:200;
+  left:50%;
+  bottom:92px;
+  transform:translateX(-50%) translateY(20px);
+  width:max-content;
+  max-width:90%;
+  padding:11px 15px;
+  border-radius:12px;
+  background:#162019;
+  border:1px solid rgba(34,197,94,.25);
+  color:#dff7e7;
+  font-size:11px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* EMPTY */
+
+.empty{
+  padding:25px 12px;
+  text-align:center;
+  color:var(--muted);
+  font-size:11px;
+}
+
+.empty-icon{
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+/* SEARCH */
+
+.search{
+  margin-bottom:13px;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  padding:15px 0;
+  color:#64736a;
+  font-size:9px;
+}
+
+.footer strong{
+  color:#86efac;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:370px){
+  .grid-3{
+    grid-template-columns:1fr 1fr;
+  }
+
+  h2{
+    font-size:25px;
+  }
+
+  .bottom-nav{
+    grid-template-columns:repeat(6,1fr);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+
+    <div class="brand">
+      <div class="logo">PX</div>
+
+      <div>
+        <h1>PelzX Life</h1>
+        <small>Diary • Growth • Design • Future</small>
+      </div>
+    </div>
+
+    <button class="icon-btn" onclick="openSettings()">⚙</button>
+
+  </div>
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section class="page active" id="home">
+
+  <div class="hero">
+
+    <div class="eyebrow" id="todayDate">TODAY</div>
+
+    <h2 id="greeting">Welcome back, PelzX.</h2>
+
+    <p class="quote">
+      This is your private space to document your life,
+      track your growth, remember your journey and build your future.
+    </p>
+
+  </div>
+
+
+  <div class="card daily-card">
+
+    <div class="daily-icon">🙏</div>
+
+    <div class="daily-label">Prayer for Today</div>
+
+    <div class="daily-text" id="dailyPrayer"></div>
+
+  </div>
+
+
+  <div class="card daily-card">
+
+    <div class="daily-icon">⚡</div>
+
+    <div class="daily-label">Motivation for Today</div>
+
+    <div class="daily-text" id="dailyMotivation"></div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>How are you feeling?</h3>
+      <span class="badge">DAILY CHECK-IN</span>
+    </div>
+
+    <div class="moods">
+
+      <button class="mood" data-mood="Great" onclick="setMood(this)">
+        😄
+        <small>Great</small>
+      </button>
+
+      <button class="mood" data-mood="Good" onclick="setMood(this)">
+        🙂
+        <small>Good</small>
+      </button>
+
+      <button class="mood" data-mood="Okay" onclick="setMood(this)">
+        😐
+        <small>Okay</small>
+      </button>
+
+      <button class="mood" data-mood="Tired" onclick="setMood(this)">
+        😴
+        <small>Tired</small>
+      </button>
+
+      <button class="mood" data-mood="Focused" onclick="setMood(this)">
+        🔥
+        <small>Focused</small>
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="grid">
+
+    <div class="stat">
+      <strong id="diaryCount">0</strong>
+      <span>Diary Entries</span>
+    </div>
+
+    <div class="stat">
+      <strong id="memoryCount">0</strong>
+      <span>Memories</span>
+    </div>
+
+    <div class="stat">
+      <strong id="ideaCount">0</strong>
+      <span>Ideas</span>
+    </div>
+
+    <div class="stat">
+      <strong id="moduleCount">0</strong>
+      <span>Modules Done</span>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>Quick Access</h3>
+    </div>
+
+    <div class="grid">
+
+      <button class="btn" onclick="showPage('diary')">
+        ✍️ Write Diary
+      </button>
+
+      <button class="btn secondary" onclick="showPage('story')">
+        📖 My Story
+      </button>
+
+      <button class="btn secondary" onclick="showPage('roadmap')">
+        🧭 Skill Roadmap
+      </button>
+
+      <button class="btn secondary" onclick="showPage('prayers')">
+        🙏 Daily Prayer
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DIARY ================= -->
+
+<section class="page" id="diary">
+
+  <div class="eyebrow">PERSONAL JOURNAL</div>
+  <h2>My Diary</h2>
+
+  <p class="muted">
+    Write down what happened, what you learned,
+    what you felt and what you want to remember.
+  </p>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>New Diary Entry</h3>
+      <span class="badge">PRIVATE</span>
+    </div>
+
+    <div class="field">
+
+      <label>Title</label>
+
+      <input
+        id="diaryTitle"
+        placeholder="Give today a title..."
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>Mood</label>
+
+      <select id="diaryMood">
+
+        <option>Great</option>
+        <option>Good</option>
+        <option>Okay</option>
+        <option>Tired</option>
+        <option>Focused</option>
+
+      </select>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>What happened today?</label>
+
+      <textarea
+        id="diaryText"
+        placeholder="Write honestly. This is your space..."
+      ></textarea>
+
+    </div>
+
+
+    <button class="btn full" onclick="saveDiary()">
+      Save Diary Entry
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>Your Entries</h3>
+    </div>
+
+    <div class="search">
+
+      <input
+        id="diarySearch"
+        oninput="renderDiary()"
+        placeholder="Search your diary..."
+      >
+
+    </div>
+
+    <div id="diaryList"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= STORY ================= -->
+
+<section class="page" id="story">
+
+  <div class="eyebrow">MY JOURNEY</div>
+  <h2>My Story</h2>
+
+  <div class="card">
+
+    <div class="card-title">
+
+      <h3>Written by Me</h3>
+
+      <span class="badge">PElZX</span>
+
+    </div>
+
+
+    <div class="story">
+
+      <p>
+        My name is <strong>Fasinasi Oluwapelumi</strong>,
+        and I’m known creatively as <strong>PelzX</strong>.
+        I’m a student and a creative who has always been drawn
+        to the meeting point between technology and art.
+      </p>
+
+      <p>
+        I enjoy graphic design, branding, UI/UX, web design
+        and visual storytelling. What started as curiosity
+        has gradually become a personal journey of learning,
+        experimenting, creating and building.
+      </p>
+
+      <p>
+        I’m still discovering many parts of my future.
+        I don't expect to know everything at once.
+        Instead, I want to keep learning one skill at a time,
+        practicing through real projects and turning ideas
+        into things people can actually experience.
+      </p>
+
+      <p>
+        PelzX represents more than just a name to me.
+        It represents creativity, growth, discipline and
+        the person I am becoming.
+      </p>
+
+      <p>
+        My goal is to combine design, technology and
+        problem-solving to create useful digital experiences.
+        I want my work to communicate, inspire and solve
+        real problems.
+      </p>
+
+      <p>
+        I am building my future one project, one lesson,
+        one idea and one day at a time.
+      </p>
+
+      <p>
+        <strong>Design. Decode. Inspire.</strong>
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>My Direction</h3>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+
+        <h4>Learn</h4>
+
+        <p>
+          Keep developing knowledge across design,
+          technology and digital products.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <h4>Practice</h4>
+
+        <p>
+          Turn every lesson into something practical.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <h4>Build</h4>
+
+        <p>
+          Create real projects instead of only consuming tutorials.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <h4>Document</h4>
+
+        <p>
+          Save the process, decisions, mistakes and lessons.
+        </p>
+
+      </div>
+
+
+      <div class="timeline-item">
+
+        <h4>Improve</h4>
+
+        <p>
+          Keep refining the person, designer and builder I am becoming.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CREATE ================= -->
+
+<section class="page" id="create">
+
+  <div class="eyebrow">IDEA SPACE</div>
+  <h2>Create & Capture</h2>
+
+  <p class="muted">
+    Capture ideas before they disappear.
+  </p>
+
+
+  <div class="card">
+
+    <div class="field">
+
+      <label>Idea title</label>
+
+      <input
+        id="ideaTitle"
+        placeholder="New website idea..."
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>Category</label>
+
+      <select id="ideaCategory">
+
+        <option>Design</option>
+        <option>Web</option>
+        <option>AI</option>
+        <option>Business</option>
+        <option>Photography</option>
+        <option>Personal</option>
+        <option>Random Thought</option>
+
+      </select>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>Idea</label>
+
+      <textarea
+        id="ideaText"
+        placeholder="Describe the idea..."
+      ></textarea>
+
+    </div>
+
+
+    <button class="btn full" onclick="saveIdea()">
+      Save Idea
+    </button>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>Saved Ideas</h3>
+    </div>
+
+    <div id="ideaList"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ROADMAP ================= -->
+
+<section class="page" id="roadmap">
+
+  <div class="eyebrow">MY PROFESSIONAL JOURNEY</div>
+
+  <h2>My Skill Roadmap</h2>
+
+  <p class="muted">
+    The PelzX Ideal Skill Roadmap — from foundation
+    to professional-level digital creation.
+  </p>
+
+
+  <div class="card roadmap-hero">
+
+    <div class="eyebrow">COMPLETE MASTERCLASS</div>
+
+    <h3 style="font-size:22px;margin-top:7px;">
+      Design • Think • Build • Innovate
+    </h3>
+
+    <p class="muted" style="margin-top:8px;">
+      Beginner → Foundation → Intermediate →
+      Advanced → Professional → Expert
+    </p>
+
+
+    <div class="progress-wrap">
+
+      <div class="progress-head">
+
+        <span>Roadmap Progress</span>
+
+        <strong id="roadmapPercent">0%</strong>
+
+      </div>
+
+      <div class="progress">
+
+        <span id="roadmapProgress"></span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div id="roadmapContent"></div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>Professional Roadmap</h3>
+      <span class="badge">6 LEVELS</span>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <h4>Level 1 — Beginner</h4>
+        <p>
+          Design principles, typography, color, layout and basic tools.
+          Outcome: clean and intentional designs.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Level 2 — Foundation</h4>
+        <p>
+          Advanced graphic design and brand identity.
+          Outcome: coherent visual systems.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Level 3 — Intermediate</h4>
+        <p>
+          Figma, UI, UX research, flows, wireframes and prototypes.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Level 4 — Advanced</h4>
+        <p>
+          Product design, HTML, CSS and responsive websites.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Level 5 — Professional</h4>
+        <p>
+          JavaScript, Git/GitHub, APIs, React,
+          AI-assisted workflows and digital products.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Level 6 — Expert</h4>
+        <p>
+          Specialization, advanced systems thinking,
+          accessibility, performance, leadership,
+          research, mentoring and innovation.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>Time-Based Roadmaps</h3>
+    </div>
+
+    <div class="module">
+      <h4>30-Day Roadmap</h4>
+      <p>
+        Week 1: typography, color, hierarchy and composition.
+        Week 2: advanced layout and branding.
+        Week 3: Figma fundamentals and UI.
+        Week 4: one polished UI project and portfolio documentation.
+      </p>
+    </div>
+
+    <div class="module">
+      <h4>60-Day Roadmap</h4>
+      <p>
+        Days 1–30: design and branding foundation.
+        Days 31–45: UI/UX.
+        Days 46–60: prototype, case study and portfolio improvement.
+      </p>
+    </div>
+
+    <div class="module">
+      <h4>90-Day Roadmap</h4>
+      <p>
+        Month 1: advanced design + brand identity.
+        Month 2: UI/UX + product thinking.
+        Month 3: HTML/CSS + responsive portfolio site.
+      </p>
+    </div>
+
+    <div class="module">
+      <h4>6-Month Professional Roadmap</h4>
+      <p>
+        Months 1–2: design/branding.
+        Month 3: UI/UX.
+        Month 4: HTML/CSS.
+        Month 5: JavaScript/Git and front-end foundations.
+        Month 6: portfolio, digital product and capstone.
+      </p>
+    </div>
+
+    <div class="module">
+      <h4>12-Month Master Roadmap</h4>
+      <p>
+        Months 1–3: design, branding and UI/UX.
+        Months 4–6: web fundamentals and JavaScript.
+        Months 7–9: front-end development, React and digital products.
+        Months 10–12: AI-assisted workflows, professional portfolio,
+        client/job readiness and capstone.
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>Final Capstone</h3>
+      <span class="badge">PELZX DIGITAL</span>
+    </div>
+
+    <p class="muted" style="margin-bottom:12px;">
+      Build a professional-style digital experience that combines
+      the entire roadmap.
+    </p>
+
+    <div class="grid">
+
+      <div class="stat">
+        <strong>10</strong>
+        <span>Required stages</span>
+      </div>
+
+      <div class="stat">
+        <strong>1</strong>
+        <span>Digital experience</span>
+      </div>
+
+    </div>
+
+    <div style="margin-top:14px;">
+
+      <div class="module">
+        <h4>Required Stages</h4>
+        <p>
+          Brand strategy → Brand identity → UX research →
+          User profile → Information architecture → User flow →
+          Wireframes → UI design → Design system →
+          Interactive prototype → Responsive website →
+          Front-end interactions → AI-assisted workflow documentation →
+          Portfolio case study.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MEMORIES ================= -->
+
+<section class="page" id="memories">
+
+  <div class="eyebrow">LIFE ARCHIVE</div>
+  <h2>Memories</h2>
+
+  <p class="muted">
+    Keep the moments you never want to forget.
+  </p>
+
+
+  <div class="card">
+
+    <div class="field">
+
+      <label>Memory title</label>
+
+      <input
+        id="memoryTitle"
+        placeholder="A day I want to remember..."
+      >
+
+    </div>
+
+
+    <div class="field">
+
+      <label>Memory</label>
+
+      <textarea
+        id="memoryText"
+        placeholder="What happened?"
+      ></textarea>
+
+    </div>
+
+
+    <button class="btn full" onclick="saveMemory()">
+      Save Memory
+    </button>
+
+  </div>
+
+
+  <div id="memoryList"></div>
+
+</section>
+
+
+<!-- ================= PRAYERS ================= -->
+
+<section class="page" id="prayers">
+
+  <div class="eyebrow">DAILY SPIRITUAL REFLECTION</div>
+
+  <h2>Prayer & Motivation</h2>
+
+  <p class="muted">
+    A new prayer and motivational message is selected automatically
+    for each day.
+  </p>
+
+
+  <div class="card daily-card">
+
+    <div class="daily-icon">🙏</div>
+
+    <div class="daily-label">Today's Prayer</div>
+
+    <div class="daily-text" id="prayerLarge"></div>
+
+  </div>
+
+
+  <div class="card daily-card">
+
+    <div class="daily-icon">🔥</div>
+
+    <div class="daily-label">Today's Motivation</div>
+
+    <div class="daily-text" id="motivationLarge"></div>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>Daily Reflection</h3>
+    </div>
+
+    <p class="muted" id="reflectionPrompt"></p>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-title">
+      <h3>Growth Principles</h3>
+    </div>
+
+    <div class="module">
+      <h4>Learn</h4>
+      <p>Understand before rushing to the next topic.</p>
+    </div>
+
+    <div class="module">
+      <h4>Practice</h4>
+      <p>Turn knowledge into action.</p>
+    </div>
+
+    <div class="module">
+      <h4>Build</h4>
+      <p>Create real projects.</p>
+    </div>
+
+    <div class="module">
+      <h4>Review</h4>
+      <p>Look at what worked and what needs improvement.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<div class="footer">
+  Built by <strong>Fasinasi Oluwapelumi • PelzX</strong><br>
+  Design. Decode. Inspire.
+</div>
+
+
+<!-- ================= BOTTOM NAV ================= -->
+
+<nav class="bottom-nav">
+
+  <button class="nav-btn active" data-page="home" onclick="showPage('home')">
+    <span>⌂</span>
+    Home
+  </button>
+
+  <button class="nav-btn" data-page="diary" onclick="showPage('diary')">
+    <span>✍</span>
+    Diary
+  </button>
+
+  <button class="nav-btn" data-page="story" onclick="showPage('story')">
+    <span>♡</span>
+    Story
+  </button>
+
+  <button class="nav-btn" data-page="roadmap" onclick="showPage('roadmap')">
+    <span>◆</span>
+    Skills
+  </button>
+
+  <button class="nav-btn" data-page="memories" onclick="showPage('memories')">
+    <span>▣</span>
+    Memories
+  </button>
+
+  <button class="nav-btn" data-page="prayers" onclick="showPage('prayers')">
+    <span>✦</span>
+    Daily
+  </button>
+
+</nav>
+
+
+<!-- ================= SETTINGS MODAL ================= -->
+
+<div class="modal" id="settingsModal">
+
+  <div class="modal-box">
+
+    <div class="modal-head">
+
+      <div>
+        <div class="eyebrow">SETTINGS</div>
+        <h3>Personalize PelzX Life</h3>
+      </div>
+
+      <button class="icon-btn" onclick="closeSettings()">×</button>
+
+    </div>
+
+
+    <div class="field">
+
+      <label>Your display name</label>
+
+      <input
+        id="nameInput"
+        placeholder="PelzX"
+      >
+
+    </div>
+
+
+    <button
+      class="btn full"
+      onclick="saveName()"
+      style="margin-bottom:9px;"
+    >
+      Save Name
+    </button>
+
+
+    <button
+      class="btn danger full"
+      onclick="resetApp()"
+    >
+      Reset Diary Data
+    </button>
+
+  </div>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* ================= STORAGE ================= */
+
+const store = {
+
+  get(key,fallback){
+
+    try{
+
+      const value =
+        localStorage.getItem("pelzxLife_"+key);
+
+      return value === null
+        ? fallback
+        : JSON.parse(value);
+
+    }catch{
+
+      return fallback;
+
+    }
+
+  },
+
+  set(key,value){
+
+    localStorage.setItem(
+      "pelzxLife_"+key,
+      JSON.stringify(value)
+    );
+
+  },
+
+  remove(key){
+
+    localStorage.removeItem(
+      "pelzxLife_"+key
+    );
+
+  }
+
+};
+
+
+/* ================= DAILY CONTENT ================= */
+
+const prayers = [
+
+"May God guide my decisions today, give me wisdom to recognize good opportunities, patience to learn and strength to keep moving forward. May my work be meaningful and my efforts produce good results.",
+
+"May I have clarity for the things I need to do today. Help me remain focused, disciplined and grateful while I continue becoming the person I want to be.",
+
+"May today bring wisdom, peace and courage. Help me learn from mistakes instead of being discouraged by them, and remind me that growth takes time.",
+
+"May God bless the work of my hands, strengthen my creativity and help me use my abilities responsibly. Give me the discipline to finish what I start.",
+
+"May I recognize progress even when it feels small. Give me patience with myself, courage to try again and wisdom to make better decisions.",
+
+"May my mind remain open to learning and my heart remain grateful. Help me build things that are useful, meaningful and valuable to others.",
+
+"May I have the strength to keep building my future one step at a time. Let my creativity, knowledge and character grow together.",
+
+"May today be productive without becoming overwhelming. Help me focus on what matters, complete what I can and learn from everything I experience."
+
+];
+
+
+const motivations = [
+
+"You do not need to have everything figured out today. You only need to take the next meaningful step.",
+
+"Your skills become valuable when you turn knowledge into real work. Keep building.",
+
+"Progress is not always dramatic. Sometimes progress is simply refusing to stop.",
+
+"Do not compare your chapter to somebody else's finished story. Focus on building yours.",
+
+"Every project teaches you something. Every mistake can become part of your process.",
+
+"Consistency can take you further than motivation alone. Show up and keep learning.",
+
+"Your future is built through small decisions repeated over time. Make today's decisions count.",
+
+"Keep learning, keep creating and keep documenting your process. One day you will look back and see how far you came."
+
+];
+
+
+const reflections = [
+
+"What did I learn today that I did not know yesterday?",
+
+"What am I proud of myself for doing today?",
+
+"What mistake taught me something useful?",
+
+"What should I improve tomorrow?",
+
+"What idea did I have today that deserves another look?",
+
+"Did I spend my time on something that moves me closer to my goals?",
+
+"What would I tell my future self about today?",
+
+"What small win should I remember?"
+
+];
+
+
+function dayIndex(){
+
+  const start =
+    new Date(new Date().getFullYear(),0,1);
+
+  const today = new Date();
+
+  return Math.floor(
+    (today-start)/(1000*60*60*24)
+  );
+
+}
+
+
+function renderDailyContent(){
+
+  const index = dayIndex();
+
+  const prayer =
+    prayers[index % prayers.length];
+
+  const motivation =
+    motivations[index % motivations.length];
+
+  const reflection =
+    reflections[index % reflections.length];
+
+  document.getElementById("dailyPrayer").textContent =
+    prayer;
+
+  document.getElementById("dailyMotivation").textContent =
+    motivation;
+
+  document.getElementById("prayerLarge").textContent =
+    prayer;
+
+  document.getElementById("motivationLarge").textContent =
+    motivation;
+
+  document.getElementById("reflectionPrompt").textContent =
+    reflection;
+
+}
+
+
+/* ================= DATE ================= */
+
+function renderDate(){
+
+  const now = new Date();
+
+  const date =
+    now.toLocaleDateString(
+      undefined,
+      {
+        weekday:"long",
+        month:"long",
+        day:"numeric",
+        year:"numeric"
+      }
+    );
+
+  document.getElementById("todayDate")
+    .textContent = date.toUpperCase();
+
+}
+
+
+/* ================= GREETING ================= */
+
+function renderGreeting(){
+
+  const name =
+    store.get("name","PelzX");
+
+  const hour =
+    new Date().getHours();
+
+  let greeting = "Welcome back";
+
+  if(hour < 12)
+    greeting = "Good morning";
+
+  else if(hour < 18)
+    greeting = "Good afternoon";
+
+  else
+    greeting = "Good evening";
+
+  document.getElementById("greeting")
+    .textContent =
+      `${greeting}, ${name}.`;
+
+}
+
+
+/* ================= NAVIGATION ================= */
+
+function showPage(page){
+
+  document.querySelectorAll(".page")
+    .forEach(section=>{
+      section.classList.remove("active");
+    });
+
+  const target =
+    document.getElementById(page);
+
+  if(target)
+    target.classList.add("active");
+
+
+  document.querySelectorAll(".nav-btn")
+    .forEach(btn=>{
+      btn.classList.toggle(
+        "active",
+        btn.dataset.page === page
+      );
+    });
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* ================= TOAST ================= */
+
+let toastTimer;
+
+function toast(message){
+
+  const box =
+    document.getElementById("toast");
+
+  box.textContent = message;
+
+  box.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer =
+    setTimeout(()=>{
+      box.classList.remove("show");
+    },2200);
+
+}
+
+
+/* ================= MOOD ================= */
+
+function setMood(button){
+
+  document.querySelectorAll(".mood")
+    .forEach(m=>{
+      m.classList.remove("active");
+    });
+
+  button.classList.add("active");
+
+  store.set(
+    "mood",
+    {
+      mood:button.dataset.mood,
+      date:new Date().toISOString()
+    }
+  );
+
+  toast(
+    "Mood saved: "+button.dataset.mood
+  );
+
+}
+
+
+function loadMood(){
+
+  const data =
+    store.get("mood",null);
+
+  if(!data)
+    return;
+
+  document.querySelectorAll(".mood")
+    .forEach(m=>{
+      if(m.dataset.mood === data.mood)
+        m.classList.add("active");
+    });
+
+}
+
+
+/* ================= DIARY ================= */
+
+function saveDiary(){
+
+  const title =
+    document.getElementById("diaryTitle")
+      .value.trim();
+
+  const mood =
+    document.getElementById("diaryMood")
+      .value;
+
+  const text =
+    document.getElementById("diaryText")
+      .value.trim();
+
+  if(!title || !text){
+
+    toast("Please complete your diary entry.");
+
+    return;
+
+  }
+
+
+  const entries =
+    store.get("diary",[]);
+
+  entries.unshift({
+
+    id:Date.now(),
+
+    title,
+
+    mood,
+
+    text,
+
+    date:new Date().toLocaleString()
+
+  });
+
+
+  store.set("diary",entries);
+
+
+  document.getElementById("diaryTitle").value="";
+  document.getElementById("diaryText").value="";
+
+
+  renderDiary();
+  updateStats();
+
+  toast("Diary entry saved.");
+
+}
+
+
+function renderDiary(){
+
+  const list =
+    document.getElementById("diaryList");
+
+  const entries =
+    store.get("diary",[]);
+
+  const search =
+    (
+      document.getElementById("diarySearch")?.value || ""
+    ).toLowerCase();
+
+
+  const filtered =
+    entries.filter(entry=>
+      entry.title.toLowerCase().includes(search) ||
+      entry.text.toLowerCase().includes(search)
+    );
+
+
+  if(!filtered.length){
+
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">📖</div>
+        No diary entries yet.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+    filtered.map(entry=>`
+
+      <div class="item">
+
+        <div class="item-top">
+
+          <div>
+
+            <h4>${escapeHTML(entry.title)}</h4>
+
+            <p>
+              ${escapeHTML(entry.date)}
+              • ${escapeHTML(entry.mood)}
+            </p>
+
+          </div>
+
+        </div>
+
+        <p style="margin-top:8px;">
+          ${escapeHTML(entry.text)}
+        </p>
+
+        <div class="item-actions">
+
+          <button
+            class="mini-btn"
+            onclick="deleteDiary(${entry.id})"
+          >
+            Delete
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+function deleteDiary(id){
+
+  const entries =
+    store.get("diary",[]);
+
+  store.set(
+    "diary",
+    entries.filter(e=>e.id !== id)
+  );
+
+  renderDiary();
+  updateStats();
+
+  toast("Diary entry deleted.");
+
+}
+
+
+/* ================= IDEAS ================= */
+
+function saveIdea(){
+
+  const title =
+    document.getElementById("ideaTitle")
+      .value.trim();
+
+  const category =
+    document.getElementById("ideaCategory")
+      .value;
+
+  const text =
+    document.getElementById("ideaText")
+      .value.trim();
+
+
+  if(!title || !text){
+
+    toast("Add an idea first.");
+
+    return;
+
+  }
+
+
+  const ideas =
+    store.get("ideas",[]);
+
+  ideas.unshift({
+
+    id:Date.now(),
+
+    title,
+
+    category,
+
+    text,
+
+    date:new Date().toLocaleString()
+
+  });
+
+
+  store.set("ideas",ideas);
+
+
+  document.getElementById("ideaTitle").value="";
+  document.getElementById("ideaText").value="";
+
+
+  renderIdeas();
+  updateStats();
+
+  toast("Idea captured.");
+
+}
+
+
+function renderIdeas(){
+
+  const list =
+    document.getElementById("ideaList");
+
+  const ideas =
+    store.get("ideas",[]);
+
+
+  if(!ideas.length){
+
+    list.innerHTML=`
+
+      <div class="empty">
+        <div class="empty-icon">💡</div>
+        Your future ideas will appear here.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+    ideas.map(idea=>`
+
+      <div class="item">
+
+        <div class="item-top">
+
+          <div>
+
+            <h4>${escapeHTML(idea.title)}</h4>
+
+            <p>
+              ${escapeHTML(idea.category)}
+              • ${escapeHTML(idea.date)}
+            </p>
+
+          </div>
+
+        </div>
+
+        <p style="margin-top:8px;">
+          ${escapeHTML(idea.text)}
+        </p>
+
+        <div class="item-actions">
+
+          <button
+            class="mini-btn"
+            onclick="deleteIdea(${idea.id})"
+          >
+            Delete
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+function deleteIdea(id){
+
+  const ideas =
+    store.get("ideas",[]);
+
+  store.set(
+    "ideas",
+    ideas.filter(i=>i.id !== id)
+  );
+
+  renderIdeas();
+  updateStats();
+
+  toast("Idea deleted.");
+
+}
+
+
+/* ================= MEMORIES ================= */
+
+function saveMemory(){
+
+  const title =
+    document.getElementById("memoryTitle")
+      .value.trim();
+
+  const text =
+    document.getElementById("memoryText")
+      .value.trim();
+
+
+  if(!title || !text){
+
+    toast("Write the memory first.");
+
+    return;
+
+  }
+
+
+  const memories =
+    store.get("memories",[]);
+
+  memories.unshift({
+
+    id:Date.now(),
+
+    title,
+
+    text,
+
+    date:new Date().toLocaleString()
+
+  });
+
+
+  store.set("memories",memories);
+
+
+  document.getElementById("memoryTitle").value="";
+  document.getElementById("memoryText").value="";
+
+
+  renderMemories();
+  updateStats();
+
+  toast("Memory saved.");
+
+}
+
+
+function renderMemories(){
+
+  const list =
+    document.getElementById("memoryList");
+
+  const memories =
+    store.get("memories",[]);
+
+
+  if(!memories.length){
+
+    list.innerHTML=`
+
+      <div class="card">
+
+        <div class="empty">
+
+          <div class="empty-icon">🗂️</div>
+
+          No memories saved yet.
+
+        </div>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  list.innerHTML =
+    memories.map(memory=>`
+
+      <div class="card">
+
+        <div class="item-top">
+
+          <div>
+
+            <h3 style="font-size:14px;">
+              ${escapeHTML(memory.title)}
+            </h3>
+
+            <p class="muted" style="font-size:9px;margin-top:4px;">
+              ${escapeHTML(memory.date)}
+            </p>
+
+          </div>
+
+          <span>♡</span>
+
+        </div>
+
+        <p
+          class="muted"
+          style="margin-top:10px;"
+        >
+          ${escapeHTML(memory.text)}
+        </p>
+
+        <div class="item-actions">
+
+          <button
+            class="mini-btn"
+            onclick="deleteMemory(${memory.id})"
+          >
+            Delete
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+function deleteMemory(id){
+
+  const memories =
+    store.get("memories",[]);
+
+  store.set(
+    "memories",
+    memories.filter(m=>m.id !== id)
+  );
+
+  renderMemories();
+  updateStats();
+
+  toast("Memory deleted.");
+
+}
+
+
+/* ================= ROADMAP DATA ================= */
+
+/*
+  Based directly on the uploaded
+  PelzX My Ideal Skill Roadmap Masterclass.
+*/
+
+const roadmap = [
+
+  {
+    part:"PART I",
+    title:"Advanced Graphic Design",
+    outcome:"Professional visual communication and stronger design decisions.",
+    modules:[
+
+      ["1","Graphic Design Foundations Revisited",
+      "Visual hierarchy, contrast, balance, alignment, proximity, repetition, white space, composition and visual flow."],
+
+      ["2","Advanced Typography",
+      "Type classifications, pairing, hierarchy, spacing, kerning, tracking, leading, readability and responsive typography."],
+
+      ["3","Advanced Color Theory",
+      "RGB, CMYK and HEX, color relationships, contrast, accessibility and consistent palette creation."],
+
+      ["4","Advanced Composition & Layout",
+      "Grids, columns, modular layouts, focal points and Gestalt principles."],
+
+      ["5","Professional Design Workflow",
+      "Brief → research → concept → sketch → design → review → revision → delivery."]
+    ],
+
+    project:"Project 1 — Premium Campaign: create a five-piece campaign for a fictional Nigerian technology brand."
+  },
+
+
+  {
+    part:"PART II",
+    title:"Brand Identity Design",
+    outcome:"Complete visual identity systems rather than isolated logos.",
+    modules:[
+
+      ["6","Understanding Branding",
+      "Brand, brand identity, brand image, positioning, audience, personality and voice."],
+
+      ["7","Logo Design",
+      "Concepts, symbols, wordmarks, responsive variations and clear-space rules."],
+
+      ["8","Visual Identity Systems",
+      "Color, typography, imagery, iconography and layout systems."],
+
+      ["9","Brand Guidelines",
+      "Logo rules, colors, typography, imagery, applications and misuse examples."]
+    ],
+
+    project:"Project 2 — Complete Brand Identity: strategy, logo system, palette, typography, social template, card and short brand guideline."
+  },
+
+
+  {
+    part:"PART III",
+    title:"UI Design",
+    outcome:"Interfaces for websites, apps, dashboards and digital products.",
+    modules:[
+
+      ["10","Introduction to UI Design",
+      "Understand the difference between graphic design and interface design, including states, consistency, content and screen sizes."],
+
+      ["11","Figma Fundamentals",
+      "Pages, frames, layers, text, shapes, components, assets, prototyping and file organization."],
+
+      ["12","UI Design Principles",
+      "Hierarchy, consistency, spacing, grids, buttons, forms, navigation, cards and feedback states."],
+
+      ["13","Responsive UI",
+      "Responsive constraints, flexible components and layouts that adapt to screen sizes."],
+
+      ["14","Design Systems",
+      "Reusable components, variants, typography styles, color roles, spacing rules and documentation."]
+    ],
+
+    project:"Project 3 — Mobile App UI: onboarding, home, detail, form/action and profile/settings screens."
+  },
+
+
+  {
+    part:"PART IV",
+    title:"UX Design",
+    outcome:"User-centered research, flows, wireframes and usability.",
+    modules:[
+
+      ["15","UX Fundamentals",
+      "Human-centered design, usability and accessibility."],
+
+      ["16","User Research",
+      "Interviews, surveys, observation, competitor research, pain points and research synthesis."],
+
+      ["17","User Flows & Information Architecture",
+      "Organize content and map the steps users take toward a goal."],
+
+      ["18","Wireframing & Prototyping",
+      "Move from rough structure to testable interactive prototypes."],
+
+      ["19","Usability Testing",
+      "Create tasks, observe behavior, identify friction and iterate."]
+    ],
+
+    project:"Project 4 — UX Case Study: research, user profile, user flow, wireframes, prototype and documented design changes."
+  },
+
+
+  {
+    part:"PART V",
+    title:"Product Design",
+    outcome:"End-to-end digital product thinking and validation.",
+    modules:[
+
+      ["20","Product Design Fundamentals",
+      "Combine user needs, business goals, constraints and technology."],
+
+      ["21","Product Discovery",
+      "Define problems, users, competitors, opportunities and assumptions."],
+
+      ["22","Designing Digital Products",
+      "User stories, requirements, flows, wireframes, UI and prototypes."],
+
+      ["23","Product Validation",
+      "Test assumptions, gather feedback, prioritize improvements and define success measures."]
+    ],
+
+    project:"Project 5 — End-to-End Product: problem definition through validated prototype."
+  },
+
+
+  {
+    part:"PART VI",
+    title:"Web Development",
+    outcome:"HTML, CSS and responsive websites.",
+    modules:[
+
+      ["24","How the Web Works",
+      "Browsers, resources, servers and the roles of HTML, CSS and JavaScript."],
+
+      ["25","HTML",
+      "Semantic structure of web content."],
+
+      ["26","CSS",
+      "Selectors, box model, typography, colors, Flexbox, Grid, positioning and responsive styling."],
+
+      ["27","Responsive Web Design",
+      "Mobile-first thinking, flexible dimensions, media queries, responsive images and adaptable layouts."]
+    ],
+
+    project:"Project 6 — Personal Portfolio Website: Home, About, Services/Skills, Projects and Contact."
+  },
+
+
+  {
+    part:"PART VII",
+    title:"Front-End Development",
+    outcome:"JavaScript, Git/GitHub, APIs and React foundations.",
+    modules:[
+
+      ["28","JavaScript Fundamentals",
+      "Variables, data types, operators, conditions, functions, arrays, objects, loops and events."],
+
+      ["29","DOM & Interactive Websites",
+      "Select elements, respond to events, update content, validate forms and build interactive UI."],
+
+      ["30","Git & GitHub",
+      "Version control, repositories, commits, branches and collaboration concepts."],
+
+      ["31","APIs & Data",
+      "Requests, responses, JSON, API endpoints and displaying retrieved data."],
+
+      ["32","React Fundamentals",
+      "Components, props, state, events, lists, forms and component organization."]
+    ],
+
+    project:"Project 7 — Interactive Web App with reusable components, form interaction and responsive layout."
+  },
+
+
+  {
+    part:"PART VIII",
+    title:"AI for Creatives",
+    outcome:"Responsible AI-assisted research, ideation and production.",
+    modules:[
+
+      ["33","Understanding Generative AI",
+      "What generative AI does, where it helps, where it can fail and why human judgment matters."],
+
+      ["34","AI-Assisted Graphic Design",
+      "Brainstorming, variations, research assistance, content drafting and controlled exploration."],
+
+      ["35","Prompt Engineering",
+      "Context, objective, constraints, references and desired output format."],
+
+      ["36","AI + UI/UX",
+      "Research questions, idea organization, content drafting and repetitive workflow acceleration."],
+
+      ["37","AI + Development",
+      "Learning, coding assistance, explanations, debugging, documentation and prototypes."]
+    ],
+
+    project:"Project 8 — AI-Assisted Creative Campaign documenting AI contribution, manual changes, failures and verification."
+  },
+
+
+  {
+    part:"PART IX",
+    title:"Digital Product Creation",
+    outcome:"Planning, designing, building and presenting digital products.",
+    modules:[
+
+      ["38","Digital Product Fundamentals",
+      "Websites, apps, templates, design systems, educational resources and digital products."],
+
+      ["39","Product Planning",
+      "Problem, user, value proposition, requirements and realistic MVP."],
+
+      ["40","Product Creation",
+      "Plan → design → build → test → improve → prepare for launch."],
+
+      ["41","Product Presentation",
+      "Landing pages, documentation, demonstrations and case studies."],
+
+      ["42","Product Improvement",
+      "Feedback, testing and analytics where available."]
+    ],
+
+    project:"Project 9 — Digital Product that solves a defined problem with documentation and portfolio case study."
+  },
+
+
+  {
+    part:"PART X",
+    title:"Professional & Business Skills",
+    outcome:"Portfolio, communication, client work, job preparation and growth.",
+    modules:[
+
+      ["43","Building a Professional Portfolio",
+      "Selected work, process, decisions, outcomes and lessons."],
+
+      ["44","Personal Branding",
+      "Professional identity, message, visual consistency and public presence."],
+
+      ["45","Freelancing",
+      "Opportunity discovery, briefs, proposals, scope, revisions and delivery."],
+
+      ["46","Working With Clients",
+      "Requirements, documented decisions, feedback and professional communication."],
+
+      ["47","Job Preparation",
+      "CV, portfolio, applications, interviews and design challenges."],
+
+      ["48","Professional Growth",
+      "Networking, mentorship, specialization, leadership and continuous learning."]
+    ],
+
+    project:"Project 10 — Professional Portfolio System: 4–6 strong case studies across graphic design, branding, UI/UX and web."
+  }
+
+];
+
+
+function renderRoadmap(){
+
+  const container =
+    document.getElementById("roadmapContent");
+
+  let html = "";
+
+  roadmap.forEach((part,index)=>{
+
+    html += `
+
+      <div class="phase">
+
+        <div class="phase-number">
+          ${part.part}
+        </div>
+
+        <h3>${part.title}</h3>
+
+      </div>
+
+      <div class="card skill-card">
+
+        <div class="skill-number">
+          ${index+1}
+        </div>
+
+        <p style="margin-top:10px;">
+          ${part.outcome}
+        </p>
+
+    `;
+
+
+    part.modules.forEach(module=>{
+
+      const key =
+        "module_"+module[0];
+
+      const done =
+        store.get(key,false);
+
+
+      html += `
+
+        <div
+          class="module ${done ? "done" : ""}"
+          id="module-${module[0]}"
+        >
+
+          <div class="module-top">
+
+            <div class="module-num">
+              MODULE ${module[0]}
+            </div>
+
+            <div style="flex:1;">
+
+              <h4>
+                ${module[1]}
+              </h4>
+
+              <p>
+                ${module[2]}
+              </p>
+
+            </div>
+
+            <button
+              class="check"
+              onclick="toggleModule('${module[0]}')"
+            >
+              ${done ? "✓" : ""}
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    });
+
+
+    html += `
+
+        <div
+          class="module"
+          style="border-color:rgba(34,197,94,.18);"
+        >
+
+          <h4 style="color:#86efac;">
+            ${part.project}
+          </h4>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+
+  container.innerHTML = html;
+
+  updateRoadmapProgress();
+
+}
+
+
+function toggleModule(number){
+
+  const key =
+    "module_"+number;
+
+  const current =
+    store.get(key,false);
+
+  store.set(key,!current);
+
+  renderRoadmap();
+  updateStats();
+
+  toast(
+    current
+      ? "Module marked incomplete."
+      : "Module completed. Keep going!"
+  );
+
+}
+
+
+function updateRoadmapProgress(){
+
+  let completed = 0;
+
+  for(let i=1;i<=48;i++){
+
+    if(store.get("module_"+i,false))
+      completed++;
+
+  }
+
+
+  const percent =
+    Math.round((completed/48)*100);
+
+
+  document.getElementById("roadmapProgress")
+    .style.width = percent+"%";
+
+  document.getElementById("roadmapPercent")
+    .textContent = percent+"%";
+
+}
+
+
+/* ================= STATS ================= */
+
+function updateStats(){
+
+  const diaries =
+    store.get("diary",[]);
+
+  const memories =
+    store.get("memories",[]);
+
+  const ideas =
+    store.get("ideas",[]);
+
+
+  let modules = 0;
+
+  for(let i=1;i<=48;i++){
+
+    if(store.get("module_"+i,false))
+      modules++;
+
+  }
+
+
+  document.getElementById("diaryCount")
+    .textContent = diaries.length;
+
+  document.getElementById("memoryCount")
+    .textContent = memories.length;
+
+  document.getElementById("ideaCount")
+    .textContent = ideas.length;
+
+  document.getElementById("moduleCount")
+    .textContent = modules;
+
+}
+
+
+/* ================= SETTINGS ================= */
+
+function openSettings(){
+
+  document.getElementById("nameInput")
+    .value =
+      store.get("name","PelzX");
+
+  document.getElementById("settingsModal")
+    .classList.add("show");
+
+}
+
+
+function closeSettings(){
+
+  document.getElementById("settingsModal")
+    .classList.remove("show");
+
+}
+
+
+function saveName(){
+
+  const name =
+    document.getElementById("nameInput")
+      .value.trim();
+
+
+  if(name){
+
+    store.set("name",name);
+
+    renderGreeting();
+
+    toast("Name updated.");
+
+    closeSettings();
+
+  }
+
+}
+
+
+/* ================= RESET ================= */
+
+function resetApp(){
+
+  const confirmReset =
+    confirm(
+      "Reset all PelzX Life diary data? This cannot be undone."
+    );
+
+  if(!confirmReset)
+    return;
+
+
+  const keys = [
+
+    "name",
+    "mood",
+    "diary",
+    "memories",
+    "ideas"
+
+  ];
+
+
+  keys.forEach(key=>{
+    store.remove(key);
+  });
+
+
+  for(let i=1;i<=48;i++){
+
+    store.remove("module_"+i);
+
+  }
+
+
+  renderAll();
+
+  closeSettings();
+
+  toast("PelzX Life has been reset.");
+
+}
+
+
+/* ================= SECURITY ================= */
+
+function escapeHTML(value){
+
+  return String(value)
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* ================= RENDER ================= */
+
+function renderAll(){
+
+  renderDate();
+
+  renderGreeting();
+
+  renderDailyContent();
+
+  loadMood();
+
+  renderDiary();
+
+  renderIdeas();
+
+  renderMemories();
+
+  renderRoadmap();
+
+  updateStats();
+
+}
+
+
+/* ================= START ================= */
+
+renderAll();
+
+</script>
+
+</div>
+
+</body>
+</html>
